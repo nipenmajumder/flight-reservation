@@ -91,36 +91,36 @@
 <script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        fetchFlights();
-    });
-
-    $(document).on('change', '#route', function () {
-        fetchFlights();
-    });
-
-    function fetchFlights() {
-        const routeId = $('#route').val();
-        $.ajax({
-            method: 'GET',
-            url: 'backend/routeWiseFlightFilter.php',
-            data: {routeId},
-            success: function (res) {
-                const response = JSON.parse(res);
-                const len = response.length;
-                $('#aircraft').empty();
-                if (len) {
-                    for (let i=0; i<len; i++) {
-                        const op_str = "<option value='"+response[i].aircraft_id+"'>" + response[i].type + "</option>"
-                        $("#aircraft").append(op_str);
-                    }
-                }
-            },
-            error: function (error) {
-                alert('Something Went Wrong!');
-            }
-        })
-    }
+    // $(document).ready(function () {
+    //     fetchFlights();
+    // });
+    //
+    // $(document).on('change', '#route', function () {
+    //     fetchFlights();
+    // });
+    //
+    // function fetchFlights() {
+    //     const routeId = $('#route').val();
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: 'backend/routeWiseFlightFilter.php',
+    //         data: {routeId},
+    //         success: function (res) {
+    //             const response = JSON.parse(res);
+    //             const len = response.length;
+    //             $('#aircraft').empty();
+    //             if (len) {
+    //                 for (let i=0; i<len; i++) {
+    //                     const op_str = "<option value='"+response[i].aircraft_id+"'>" + response[i].type + "</option>"
+    //                     $("#aircraft").append(op_str);
+    //                 }
+    //             }
+    //         },
+    //         error: function (error) {
+    //             alert('Something Went Wrong!');
+    //         }
+    //     })
+    // }
 
     $(document).on('submit', '#newTicketForm', function (e) {
         e.preventDefault();

@@ -54,7 +54,7 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <table class="table table-striped table-hover d-none" style="width:100%;" id="flightListTable">
+                                        <table class="table table-striped table-hover" style="display: none" id="flightListTable">
                                             <thead>
                                             <tr>
                                                 <th>SL</th>

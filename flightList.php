@@ -35,10 +35,12 @@
                                         <thead>
                                         <tr>
                                             <th>SL</th>
-                                            <th>Type</th>
+                                            <th>Name</th>
                                             <th>Capacity</th>
-                                            <th>MFG Date</th>
-                                            <th></th>
+                                            <th>Departure</th>
+                                            <th>Department</th>
+                                            <th>Fare</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -50,9 +52,11 @@
                                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                             echo "<tr>";
                                             echo "<td>" . $std_num . "</td>";
-                                            echo "<td>" . $row['type'] . "</td>";
+                                            echo "<td>" . $row['name'] . "</td>";
                                             echo "<td>" . $row['capacity'] . "</td>";
-                                            echo "<td>" . $row['mfg_date'] . "</td>";
+                                            echo "<td>" . $row['departure'] . "</td>";
+                                            echo "<td>" . $row['destination'] . "</td>";
+                                            echo "<td>" . $row['fare'] . "</td>";
                                             echo "<td><a href='editFlight.php?id=" . $row['id'] . "'><i class='fa fa-edit'></i></a></td>";
                                             echo "</tr>";
                                             $std_num++;
