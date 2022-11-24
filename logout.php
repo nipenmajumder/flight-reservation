@@ -1,6 +1,5 @@
 <?php
     session_start();
-    unset($_SESSION["id"]);
-    unset($_SESSION["username"]);
-    header("Location: login.php");
+unset($_SESSION["id"], $_SESSION["name"]);
+header("Location: front-login.php");
 ?>

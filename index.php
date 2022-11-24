@@ -1,237 +1,1267 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<?php include 'partials/head.html'; ?>
 <?php include 'backend/loginCheck.php'; ?>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<head>
+    <link rel="shortcut icon" href="https://d19qjkjk65tfln.cloudfront.net:443/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://d19qjkjk65tfln.cloudfront.net:443/img/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://d19qjkjk65tfln.cloudfront.net:443/js/bootstrap-modal.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://d19qjkjk65tfln.cloudfront.net:443/css/jquery-ui.css?v=2"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+    <link href="https://d19qjkjk65tfln.cloudfront.net:443/css/shohoz_style.css?v=10.0.13" rel="stylesheet">
+    <link href="https://d19qjkjk65tfln.cloudfront.net:443/css/meanmenu.min.css" rel="stylesheet">
+    <link href="https://d19qjkjk65tfln.cloudfront.net:443/css/template.css?v=1" rel="stylesheet">
+    <noscript>
+        <meta http-equiv="refresh" id="mtaJSCheck" content="0;/enable-javascript.html"/>
+    </noscript>
+    <link href="https://d19qjkjk65tfln.cloudfront.net:443/font-awesome-4.3.0/css/font-awesome.css?v=2" rel="stylesheet">
+    <title>Flight</title>
+    <link href="https://d19qjkjk65tfln.cloudfront.net:443/css/loader.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            font-weight: 400;
+            box-sizing: border-box;
+        }
 
+        .home {
+            max-width: 1150px;
+            margin: auto;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .home .row-1 {
+            height: auto;
+        }
+
+        .home .row-1 .form-div {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .home .row-1 form {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .home .row-1 form > div {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+
+        .home .row-1 form .first-input {
+            margin-right: 20px;
+        }
+
+        .home .row-1 form > div > div {
+            flex: 1;
+        }
+
+        .home .row-1 form input {
+            width: 100%;
+            border: 1px solid #CCCCCC;
+            box-sizing: border-box;
+            border-radius: 4px;
+            height: 30px;
+            padding-left: 8px;
+        }
+
+        .home .row-1 form label {
+            font-weight: 600;
+            font-size: 10px;
+            line-height: 22px;
+            color: #333333;
+            margin: 0;
+        }
+
+        .home .row-1 form input::placeholder {
+            font-size: 10px;
+            line-height: 22px;
+            color: #999C9F;
+            font-weight: 400;
+        }
+
+        .home .row-1 form input:focus {
+            outline: none;
+        }
+
+        .home .row-1 form button {
+            width: 100%;
+            background: #006747;
+            border-radius: 4px;
+            border: none;
+            color: white;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            height: 30px;
+        }
+
+        .home .row-1 .banner-div {
+            border-radius: 10px;
+            margin: 10px;
+            margin-right: 0;
+            position: relative;
+        }
+
+        .banner-image-wrap {
+            width: 100%;
+            z-index: 1;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .banner-image-wrap img {
+            width: 100%;
+        }
+
+        .home .row-1 .banner-div .banner-content {
+            text-align: right;
+            margin-top: 40px;
+            margin-right: 20px;
+            position: absolute;
+            z-index: 2;
+            right: 0;
+            top: 0;
+        }
+
+        .home .row-1 .banner-div .banner-content .slogan .bold {
+            font-weight: 700;
+            color: #006747;
+        }
+
+        .banner-content .slogan {
+            font-family: Barlow, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 22px;
+            margin-bottom: 15px;
+        }
+
+        .home .row-1 .money-partners img {
+            height: 18px;
+        }
+
+        .home .row-1 .money-partners {
+            width: 260px;
+            margin-left: auto;
+        }
+
+        .home .row-1 .money-partners {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .home .row-2 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 112px;
+            column-gap: 15px;
+        }
+
+        .home .row-2 .step-div {
+            max-width: 250px;
+            width: 100%;
+        }
+
+        .home .row-2 .step-div .heading-div {
+            font-weight: 900;
+            font-size: 27px;
+            line-height: 27px;
+            color: #333333;
+        }
+
+        .home .row-2 .step-div .description-div {
+            font-size: 14px;
+            line-height: 24px;
+            color: #333333;
+        }
+
+        .home .row-2 .step-div .img-div {
+            height: 200px;
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .home .row-2 .step-div .img-div img {
+            max-width: 100%;
+        }
+
+        .home .row-2 .step-div .heading-div {
+            margin-bottom: 20px;
+        }
+
+        .home .row-2 .step-div .description-div {
+            font-weight: 400;
+        }
+
+        .home .row-3 {
+            margin-bottom: 50px;
+            padding: 30px 0;
+            border-top: 1px solid #D1D5DD;
+            border-bottom: 1px solid #D1D5DD;
+            width: 100vw;
+        }
+
+        form#trainsearch {
+            margin-top: 75px;
+        }
+
+        .search-col-rw {
+            margin-bottom: 42px;
+        }
+
+        @media screen and (min-width: 884px) {
+            .home .row-3 {
+                margin-left: calc((884px - 100vw) / 2);
+            }
+        }
+
+        #main_wrapper {
+            margin-top: 100px !important;
+        }
+
+        .railway-payment-partners-wrapper {
+            padding: 30px 0;
+            border-top: 1px solid #D1D5DD;
+            border-bottom: 1px solid #D1D5DD;
+            width: 100%;
+        }
+
+        .railway-payment-partners-wrapper .money-partners {
+            display: flex;
+            justify-content: center;
+        }
+
+        .railway-payment-partners-wrapper .money-partners .money-logo {
+            margin-right: 28px;
+            height: 43px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home .row-4 {
+            min-height: 135px;
+            display: flex;
+            align-items: center;
+        }
+
+        .home .row-4 .note {
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 23px;
+            text-align: center;
+            color: #333333;
+        }
+
+        .srch_container {
+            border-bottom: 0;
+            margin-bottom: 80px;
+        }
+
+        #content {
+            margin-top: 0;
+        }
+
+        .top-header {
+            display: none;
+        }
+
+        .money-logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .main-meta-title {
+            display: none;
+        }
+
+        .available-tickets,
+        .today-visited-users {
+            background: #EEF4F2;
+            opacity: 0.75;
+            border-radius: 8px;
+            height: 104px;
+            margin: 0;
+            position: relative;
+        }
+
+        .counter-loader {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            animation: load 1.5s normal infinite;
+        }
+
+        @keyframes load {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .counter-title-col {
+            height: 48px;
+            background: linear-gradient(90.83deg, #003424 -0.19%, #4cbc9a 102.47%);
+            padding: 14px 26px 14px 20px;
+            border-radius: 8px 8px 0 0;
+            margin: 0;
+        }
+
+        .today-visited-users .counter-title-col {
+            background: linear-gradient(90.83deg, #bc6e24 -0.19%, #F4A861 102.47%);
+            padding-top: 9px;
+        }
+
+        .counter-title {
+            font-family: 'Arial';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 21px;
+            color: #FFFFFF;
+            margin: 0;
+            display: flex;
+        }
+
+        .today-visited-users {
+            margin-left: 0;
+        }
+
+        .counter-label {
+            font-family: 'Arial';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 14px;
+            color: #023623;
+            display: inline-block;
+        }
+
+        .counter-value {
+            font-family: 'Arial';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 27px;
+            line-height: 27px;
+            color: #023623;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .date-slider {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 150px;
+            float: right;
+        }
+
+        .slider-btn {
+            width: 14px;
+            height: 14px;
+            font-size: 10px;
+            flex-basis: 14px;
+            min-width: 14px !important;
+            text-align: center;
+            border-radius: 9px;
+            border: 0;
+            outline: 0;
+            padding: 0;
+            position: relative;
+            transition: 0.5s transform;
+        }
+
+        .slider-btn:hover {
+            transform: scale(1.5);
+        }
+
+        .date-text-wrapper {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .last-updated-text {
+            text-align: right;
+            font-size: 12px;
+            margin: 0;
+            line-height: 14px;
+            color: #023623;
+        }
+
+        .last-updated-datetime {
+            margin-bottom: 30px;
+            font-family: 'Lato', 'Arial', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 22px;
+            text-align: center;
+            color: #023623;
+        }
+
+        .today-visited-users .counter-title {
+            padding-top: 4px;
+        }
+
+        .instruction-section {
+            margin: 0 0 140px;
+        }
+
+        .instruction-section h3 {
+            font-family: 'Arial';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 27px;
+            line-height: 31px;
+            color: #023623;
+            margin: 0 0 20px;
+        }
+
+        ul.instruction-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.instruction-list li {
+            display: flex;
+            overflow: hidden;
+            height: auto;
+            margin-bottom: 15px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+            color: #023623;
+        }
+
+        .list-icon-holder {
+            background: #006747;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0;
+            text-align: center;
+            color: #FFF;
+            border-radius: 15px;
+            margin-right: 10px;
+            flex-basis: 32px;
+        }
+
+        .list-item-text {
+            width: 100%;
+        }
+
+        img.instruction-image {
+            max-width: 100%;
+        }
+
+        .rail-sheba-bold-link {
+            color: #023623;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .rail-sheba-underlined-link {
+            color: #006747;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .counter-section {
+            margin-bottom: 150px;
+        }
+
+        .counter-data-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 54px;
+        }
+
+        .online-offline-data {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 54px;
+        }
+
+        @media screen and (max-width: 991px) {
+            .home .row-1 .banner-div {
+                margin-left: 0;
+            }
+
+            .search-col-rw {
+                padding-right: 0;
+            }
+
+            .home .row-4 .note {
+                padding: 0 30px;
+            }
+
+            img.instruction-image {
+                margin-bottom: 30px;
+            }
+
+            .instruction-section h3 {
+                font-size: 20px;
+            }
+
+            .list-icon-holder {
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 12px;
+                flex-basis: 26.77px;
+            }
+
+            ul.instruction-list li {
+                font-size: 14px;
+                line-height: 24px;
+            }
+
+            .counter-title-col {
+                height: auto;
+            }
+
+            .date-slider {
+                float: left;
+                margin: 5px 15px 0;
+            }
+
+            .available-tickets, .today-visited-users {
+                height: auto;
+                margin-bottom: 30px;
+            }
+
+            .counter-data-col, .online-offline-data {
+                height: 70px;
+            }
+
+            .last-updated-text {
+                text-align: left;
+                margin: 5px 15px 0;
+            }
+
+            .counter-label {
+                margin-left: 20px;
+            }
+
+            .instruction-section {
+                margin-bottom: 110px;
+            }
+
+            .counter-section {
+                margin-bottom: 80px;
+            }
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            .home .row-2 {
+                position: relative;
+                top: 50px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .home .row-2 {
+                display: block;
+                margin-bottom: 70px;
+            }
+
+            .home .row-2 .step-div {
+                width: 280px;
+                margin: 0 auto 50px;
+            }
+
+            .railway-payment-partners-wrapper .money-partners {
+                display: block;
+            }
+
+            .railway-payment-partners-wrapper .money-partners .money-logo {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .home .row-4 {
+                height: auto;
+                padding-top: 45px;
+                padding-bottom: 30px;
+            }
+
+            .date-text-wrapper {
+                color: #FFFFFF;
+            }
+
+            img.instruction-image {
+                margin: 0 auto 30px;
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home .row-1 {
+                margin-bottom: 0;
+            }
+
+            form#trainsearch {
+                margin-top: 25px;
+            }
+
+            .home .row-4 .note {
+                padding: 0 20px;
+            }
+
+            .footer {
+                padding: 50px 15px !important;
+            }
+
+            .home .row-1 .money-partners {
+                width: 110px;
+            }
+
+            .banner-content .slogan {
+                font-size: 12px;
+            }
+
+            .home .row-1 .banner-div .banner-content {
+                margin-top: 20px;
+            }
+
+            .search-col-rw {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+    <style>
+        .truck-nav:hover .truck-nav-icon-black {
+            display: none !important;
+        }
+
+        .truck-nav-icon-white {
+            display: none;
+        }
+
+        .main-navigation ul li a:hover, .main-navigation ul li a.current {
+            background: inherit !important;
+            color: #0F2444 !important;
+            border-bottom: 2px solid #0F2444;
+            border-radius: 0;
+        }
+
+        .main-navigation ul li a:focus, .main-navigation ul li a:active {
+            text-decoration: none;
+        }
+
+        .current .truck-nav-icon-white {
+            display: inline !important;
+        }
+
+        .truck-nav:hover .truck-nav-icon-white {
+            display: inline !important;
+        }
+
+        .main-navigation {
+            margin-right: 0;
+            float: right;
+            margin-top: 8px;
+        }
+
+        .site-logo .header-logo {
+            display: flex;
+            align-items: center;
+            color: #DA924E;
+            font-weight: 700;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .site-logo .header-logo .header-logo-img {
+            margin-right: 10px;
+        }
+
+        .site-logo .header-logo-text {
+            align-items: center;
+            color: #DA924E;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .main-header {
+            padding: 15px 0 10px;
+        }
+
+        .railway-logged-user {
+            width: 211px;
+            height: 42px;
+            border: 1px solid #eeeeee !important;
+            border-radius: 8px !important;
+            box-sizing: border-box;
+            color: #001529 !important;
+            font-weight: bold;
+            line-height: 42px;
+            display: flex !important;
+            justify-content: space-between;
+            padding: 0 20px !important;
+            align-items: center;
+        }
+
+        span.user-name-text {
+            flex-basis: 157px;
+            text-align: left;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 14px !important;
+            white-space: nowrap;
+        }
+
+        .railway-logged-user:hover, .railway-logged-user.has-active-child {
+            border: 1px solid #C4C4C4 !important;
+            border-radius: 8px !important;
+        }
+
+        .user-dropdown-railway {
+            position: relative;
+        }
+
+        .user-dropdown-railway a i {
+            font-size: 12px;
+        }
+
+        .user-dropdown-railway a .fa-chevron-up {
+            display: none;
+        }
+
+        .user-dropdown-railway .user-related-links .single-url a {
+            border-bottom: 0 !important;
+            display: flex !important;
+            align-items: center;
+            column-gap: 15px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px !important;
+            line-height: 22px !important;
+            color: #6E6E6E !important;
+            padding: 0 20px !important;
+            height: 22px;
+        }
+
+        .user-dropdown-railway .user-related-links .single-url a > i {
+            flex-basis: 16px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .user-dropdown-submenu {
+            position: absolute;
+            width: 274px;
+            height: auto;
+            text-align: left;
+            top: 100%;
+            right: 0;
+            display: none;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            z-index: 100;
+            padding: 20px 0 0;
+        }
+
+        p.drop-title-user {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 22px;
+            color: #001529;
+            margin: 0 0 24px;
+            padding: 0 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dropdown-user-info {
+            display: flex;
+            padding: 0 20px;
+            align-items: center;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: #6E6E6E;
+            column-gap: 15px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .dropdown-user-info span {
+            word-break: break-word;
+        }
+
+        .dropdown-user-info i {
+            flex-basis: 16px;
+            text-align: center;
+        }
+
+        .dropdown-user-info i.fa-envelope {
+            font-size: 16px;
+        }
+
+        .dropdown-user-info i.fa-mobile {
+            font-size: 28px;
+        }
+
+        .user-dropdown-divider {
+            height: 1px;
+            background: #CCC;
+            margin-bottom: 20px;
+        }
+
+        .user-dropdown-submenu .user-related-links .single-url {
+            display: block;
+            margin-bottom: 20px;
+            height: 22px;
+        }
+
+        .user-dropdown-submenu .user-related-links .single-url > a:hover, .user-dropdown-submenu .user-related-links .single-url > a.current {
+            border-bottom-color: transparent !important;
+            color: #006747 !important;
+        }
+
+        @media (max-width: 991px) {
+            .user-dropdown-submenu {
+                width: 100%;
+                padding: 20px 0;
+            }
+
+            .dropdown-user-info,
+            .user-dropdown-railway .user-related-links .single-url a,
+            p.drop-title-user {
+                padding: 0 5% !important;
+            }
+
+            .mean-container .mean-nav ul li.mean-last .railway-logged-user {
+                width: 100%;
+                color: #FFF !important;
+                padding: 0 5% !important;
+                border-left: 0 !important;
+                border-bottom: 0 !important;
+                border-radius: 0 !important;
+                border-top: 1px solid rgba(255, 255, 255, .5) !important;
+                background-color: #089d49 !important;
+            }
+
+            .user-dropdown-railway a .fa-chevron-up, .user-dropdown-railway a .fa-chevron-down {
+                position: absolute;
+                right: 20px;
+            }
+
+            .user-dropdown-railway a:hover .fa-chevron-down {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .truck-nav-icon-white {
+                display: inline;
+            }
+
+            .truck-nav-icon-black {
+                display: none;
+            }
+
+            .railway-logged-user {
+                color: #FFF;
+                padding: 10px 20px;
+            }
+
+            header.new-header .site-wrapper {
+                padding-left: 0;
+            }
+        }
+    </style>
+    <style type="text/css">
+        #claim-insurance {
+            display: inline-block;
+            border: 1px solid #079d49;
+            border-radius: 5px;
+        }
+
+        #claim-insurance:hover, #claim-insurance:focus {
+            color: #079d49;
+        }
+
+        #claim-insurance span {
+            float: left;
+            font-size: 14px;
+            line-height: 14px;
+            padding: 10px;
+        }
+
+        #claim-insurance img {
+            border-left: 1px solid #079d49;
+            margin: 0;
+            padding: 5px;
+            float: left;
+            width: 36px;
+        }
+
+        #search_sec {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        /*modal body css*/
+        .modal-body {
+            top: 138px;
+            right: 50px;
+            padding: 0px !important;
+            width: 744px;
+            height: 295px;
+            border-radius: 3px !important;
+            border: 0px !important;
+            display: inline-block;
+        }
+
+        .text-label {
+            background: #C3E6CF;
+            border-radius: 3px;
+            width: 155px;
+            text-align: center;
+            height: 20px;
+        }
+
+        .text-label-position {
+            padding-top: 3px;
+            font-weight: 900;
+            font-size: 10px;
+            line-height: 15px;
+            letter-spacing: 0.3em;
+            color: #079D49;
+        }
+
+        .btn-size {
+            width: 159px;
+            height: 35px;
+            background: #079D49;
+            border: 1px solid #079D49;
+            box-sizing: border-box;
+            border-radius: 23px;
+        }
+
+        .btn-size:focus {
+            background: #079D49 !important;
+        }
+
+        .btn-size:hover {
+            background: #079D49 !important;
+        }
+
+        .img-size img {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            width: 100%;
+            height: 295px;
+        }
+
+        .ipad-size {
+            display: inline-block;
+        }
+
+        .railway-ticket-search-submit-btn {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+
+        .railway-ticket-search-submit-btn button:hover {
+            background-color: #079d49;
+        }
+
+        .railway-ticket-search-submit-btn button {
+            width: 100%;
+            background: #006747;
+            border-radius: 4px;
+            border: none;
+            color: white;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            height: 40px;
+        }
+
+        .railway-form-error {
+            min-height: 40px;
+            margin: 5px 15px;
+            padding: 11px 10px 11px 32px;
+            font-weight: normal;
+            background: #FFF1F0;
+            border: 1px solid #FFCCC7;
+            box-sizing: border-box;
+            border-radius: 5px;
+            font-size: 12px;
+            line-height: 16px;
+            color: rgba(0, 0, 0, 0.85);
+            background-image: url(https://d19qjkjk65tfln.cloudfront.net:443/img/icon/times-circle-icon.svg);
+            background-repeat: no-repeat;
+            background-position: 10px;
+            text-align: left;
+        }
+
+        /*---------------------Mobile view responsive -----------------------*/
+        @media only screen and (max-width: 767px) {
+            .modal-body {
+                top: 45px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+            }
+
+            .ipad-size {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+
+            .img-size img {
+                width: 100%;
+                height: 250px;
+                border-top-left-radius: 3px;
+            }
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 1199px) {
+            .modal-body {
+                left: 0px;
+                width: 100%;
+                height: 100%;
+            }
+
+            .ipad-size {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+
+            .img-size img {
+                width: 100%;
+                height: 250px;
+            }
+        }
+
+    </style>
+</head>
 <body>
-<div class="loader"></div>
-<div id="app">
-    <div class="main-wrapper main-wrapper-1">
-
-        <?php require_once 'backend/connection.php'; ?>
-        <?php include 'partials/navbar.html'; ?>
-
-        <?php include 'partials/sidebar.php'; ?>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <section class="section">
-                <div class="row">
-                    <?php
-
-                    $sql = "SELECT COUNT(id) as total_aircraft FROM aircrafts";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    $total_aircrafts = $row['total_aircraft'];
-
-                    $passengersSql = "SELECT COUNT(id) as total_passengers FROM passengers";
-                    $result = mysqli_query($conn, $passengersSql);
-                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    $total_passengers = $row['total_passengers'];
-
-                    $sqlTransactions = "SELECT COUNT(id) as total_transactions FROM transactions";
-                    $result = mysqli_query($conn, $sqlTransactions);
-                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    $total_transactions = $row['total_transactions'];
-
-                    $sqlAirfares = "SELECT SUM(fare) as total_airfares FROM airfares";
-                    $result = mysqli_query($conn, $sqlAirfares);
-                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    $total_airfares = $row['total_airfares'];
-
-                    $conn->close();
-                    ?>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="card">
-                            <div class="card-statistic-4">
-                                <div class="align-items-center justify-content-between">
-                                    <div class="row ">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                            <div class="card-content">
-                                                <h5 class="font-15">Total Passengers</h5>
-                                                <h2 class="mb-3 font-18"><?php echo $total_passengers; ?></h2>
-                                                <p class="mb-0"><span class="col-green">10%</span> Increase</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                            <div class="banner-img">
-                                                <img src="assets/img/banner/1.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<link rel="stylesheet" href="https://d19qjkjk65tfln.cloudfront.net:443/v2/assets/styles/learn.css?v=1.4.10"/>
+<header class="new-header">
+    <div class="main-header">
+        <div class="container-wrapper">
+            <div class="site-wrapper clearfix">
+                <div class="site-logo">
+                    <a title="Bangladesh Railway" href="index.php" class="header-logo">
+                        <div class="header-logo-text" style="color: #6777ef;">
+                            Flight Reservation
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="card">
-                            <div class="card-statistic-4">
-                                <div class="align-items-center justify-content-between">
-                                    <div class="row ">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                            <div class="card-content">
-                                                <h5 class="font-15"> Total Flights</h5>
-                                                <h2 class="mb-3 font-18"><?php echo $total_aircrafts; ?></h2>
-                                                <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                            <div class="banner-img">
-                                                <img src="assets/img/banner/2.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="card">
-                            <div class="card-statistic-4">
-                                <div class="align-items-center justify-content-between">
-                                    <div class="row ">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                            <div class="card-content">
-                                                <h5 class="font-15">Total Tickets</h5>
-                                                <h2 class="mb-3 font-18"><?php echo $total_transactions; ?></h2>
-                                                <p class="mb-0"><span class="col-green">18%</span>
-                                                    Increase</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                            <div class="banner-img">
-                                                <img src="assets/img/banner/3.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="card">
-                            <div class="card-statistic-4">
-                                <div class="align-items-center justify-content-between">
-                                    <div class="row ">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                            <div class="card-content">
-                                                <h5 class="font-15">Total Fares</h5>
-                                                <h2 class="mb-3 font-18">Tk.<?php echo $total_airfares; ?></h2>
-                                                <p class="mb-0"><span class="col-green">42%</span> Increase</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                            <div class="banner-img">
-                                                <img src="assets/img/banner/4.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-lg-12">
-                        <div class="card ">
-                            <div class="card-header">
-                                <h4>Revenue chart</h4>
-                                <div class="card-header-action">
-                                    <div class="dropdown">
-                                        <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
-                                        <div class="dropdown-menu">
-                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i>
-                                                View</a>
-                                            <a href="#" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="#" class="dropdown-item has-icon text-danger"><i
-                                                        class="far fa-trash-alt"></i>
-                                                Delete</a>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="btn btn-primary">View All</a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-9">
-                                        <div id="chart1"></div>
-                                        <div class="row mb-0">
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                <div class="list-inline text-center">
-                                                    <div class="list-inline-item p-r-30"><i
-                                                                data-feather="arrow-up-circle"
-                                                                class="col-green"></i>
-                                                        <h5 class="m-b-0">$675</h5>
-                                                        <p class="text-muted font-14 m-b-0">Weekly Earnings</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                <div class="list-inline text-center">
-                                                    <div class="list-inline-item p-r-30"><i
-                                                                data-feather="arrow-down-circle"
-                                                                class="col-orange"></i>
-                                                        <h5 class="m-b-0">$1,587</h5>
-                                                        <p class="text-muted font-14 m-b-0">Monthly Earnings</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                <div class="list-inline text-center">
-                                                    <div class="list-inline-item p-r-30"><i
-                                                                data-feather="arrow-up-circle"
-                                                                class="col-green"></i>
-                                                        <h5 class="mb-0 m-b-0">$45,965</h5>
-                                                        <p class="text-muted font-14 m-b-0">Yearly Earnings</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="row mt-5">
-                                            <div class="col-7 col-xl-7 mb-3">Total customers</div>
-                                            <div class="col-5 col-xl-5 mb-3">
-                                                <span class="text-big">8,257</span>
-                                                <sup class="col-green">+09%</sup>
-                                            </div>
-                                            <div class="col-7 col-xl-7 mb-3">Total Income</div>
-                                            <div class="col-5 col-xl-5 mb-3">
-                                                <span class="text-big">$9,857</span>
-                                                <sup class="text-danger">-18%</sup>
-                                            </div>
-                                            <div class="col-7 col-xl-7 mb-3">Project completed</div>
-                                            <div class="col-5 col-xl-5 mb-3">
-                                                <span class="text-big">28</span>
-                                                <sup class="col-green">+16%</sup>
-                                            </div>
-                                            <div class="col-7 col-xl-7 mb-3">Total expense</div>
-                                            <div class="col-5 col-xl-5 mb-3">
-                                                <span class="text-big">$6,287</span>
-                                                <sup class="col-green">+09%</sup>
-                                            </div>
-                                            <div class="col-7 col-xl-7 mb-3">New Customers</div>
-                                            <div class="col-5 col-xl-5 mb-3">
-                                                <span class="text-big">684</span>
-                                                <sup class="col-green">+22%</sup>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                <nav class="main-navigation" style="display: block;">
+                    <ul>
+                        <li><a title="Railway Home" href="index.php" class="" style="color: #6777ef;">Home</a></li>
+                        <li><a title="Railway Home" href="dashboard.php" class="" style="color: #6777ef;">Dashboard</a></li>
+<!--                        <li><a title="Login" href="front-login.php" class="" style="color: #6777ef;">Login</a></li>-->
+<!--                        <li><a title="Register" href="register.php" class="" style="color: #6777ef;">Register</a></li>-->
+                        <?php
+                        session_start();
+                        if (isset($_SESSION['id'])) {
+                            echo '<li><a title="Logout" href="logout.php" class="" style="color: #6777ef;">Logout</a></li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
+                <div class="mobile-menu"></div>
+            </div>
         </div>
-
-        <?php include 'partials/footer.html'; ?>
     </div>
+</header>
+
+<div id="main_wrapper">
+    <?php include 'backend/connection.php'; ?>
+    <div class="main-meta-title">
+        <h1>Flight Reservation</h1>
+    </div>
+    <div class="clearfix"></div>
+    <section id="content" class="container">
+        <div id="search_sec" style="padding:0;">
+            <div class="clearfix"></div>
+            <div class="srch_container" style="padding:10px 0;">
+                <div class="block col-md-12 search-col-rw" style="position: static;padding-left: 0;">
+                    <div id="dialog_container_block" title="Message Dialog"></div>
+                    <ul class="list-inline">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="departure">From</label>
+                                    <select name="departure" id="departure" class="form-control">
+                                        <option value="" selected disabled>Choose a Departure Airport</option>
+                                        <?php
+                                        $sql = "SELECT * FROM airports";
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                            echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="destination">To</label>
+                                    <select name="destination" id="destination" class="form-control">
+                                        <option value="" selected disabled>Choose a Destination Airport</option>
+                                        <?php
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                            echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                        }
+                                        $conn->close();
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row search-widget-button-and-error">
+                            <div class="col-md-12" style="margin-top:20px;">
+                                <div class="railway-ticket-search-submit-btn">
+                                    <button id="search" style="background-color: #6777ef;">SEARCH Plains</button>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-striped table-hover" style="display: none" id="flightListTable">
+                <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Name</th>
+                    <th>Capacity</th>
+                    <th>Departure</th>
+                    <th>Fare</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="https://d19qjkjk65tfln.cloudfront.net:443/js/modernizr.custom.2.6.2.min.js"></script>
+<script src="https://d19qjkjk65tfln.cloudfront.net:443/js/jquery.meanmenu.min.js"></script>
+<script>
+    $('nav.main-navigation').meanmenu({
+        meanScreenWidth: "992",
+        meanMenuContainer: '.mobile-menu'
+    });
+</script>
+<script>
+    $(document).on('click', '#search', function () {
+        const departure = $('#departure').val();
+        const destination = $('#destination').val();
+        $.ajax({
+            method: 'GET',
+            url: 'backend/routeWiseFlightFilter.php',
+            data: {departure, destination},
+            success: function (res) {
+                $('#flightListTable').show();
+                $("#flightListTable tbody").empty();
+                const response = JSON.parse(res);
+                const len = response.length;
+                if (len) {
+                    for (let i = 0; i < len; i++) {
+                        const tr_str = "<tr>" +
+                            "<td>" + (i + 1) + "</td>" +
+                            "<td>" + response[i].name + "</td>" +
+                            "<td>" + response[i].capacity + "</td>" +
+                            "<td>" + response[i].departure + "</td>" +
+                            "<td>" + response[i].fare + "</td>" +
+                            "<td style='width:8%'> <input type='date' class='form-control' name='date' id='date'/> </td>" +
+                            "<td> <button type='button' onclick='reserve(" + response[i].id + ")' class='btn btn-sm btn-success'>Reserve </button></td>" +
+                            "</tr>";
 
-<?php include 'partials/jsAssets.html'; ?>
+                        $("#flightListTable tbody").append(tr_str);
+                    }
+                }
+            },
+            error: function (error) {
 
+            }
+        })
+    });
+
+    //$(document).on('click', '#reserve', function () {
+    //    const passenger_id = <?php //echo $_SESSION['id']; ?>//;
+    //    const date = $('#date').val();
+    //    const aircraft_id = $('#aircraft_id').val();
+    //    console.log(passenger_id, date, aircraft_id);
+    //    // $.ajax({
+    //    //     method: 'GET',
+    //    //     url: 'backend/reserveTicket.php',
+    //    //     data: {date},
+    //    //     success: function (res) {
+    //    //         console.log(res);
+    //    //     },
+    //    //     error: function (error) {
+    //    //
+    //    //     }
+    //    // })
+    //});
+    function reserve(id) {
+        const passenger_id = <?php echo $_SESSION['id']; ?>;
+        const date = $('#date').val();
+        let aircraft_id = id;
+
+        $.ajax({
+            method: 'post',
+            url: 'backend/reserveTicket.php',
+            data: {passenger_id, date, aircraft_id},
+            success: function (res) {
+              if (res === 'success') {
+                  alert('Ticket Reserved Successfully');
+              } else {
+                  alert('Something went wrong');
+              }
+            },
+            error: function (error) {
+
+            }
+        })
+    }
+</script>
 </body>
 </html>

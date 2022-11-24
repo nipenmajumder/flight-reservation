@@ -13,7 +13,6 @@
         <?php require_once 'backend/connection.php'; ?>
         <?php include 'backend/loginCheck.php'; ?>
         <?php include 'partials/navbar.html'; ?>
-
         <?php include 'partials/sidebar.php'; ?>
 
         <div class="main-content">
@@ -29,13 +28,14 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="country">Country</label>
-                                            <select class="form-control select2" id="country" name="country_id" required>
+                                            <select class="form-control select2" id="country" name="country_id"
+                                                    required>
                                                 <?php
                                                 $sql = "SELECT * FROM countries";
                                                 $result = mysqli_query($conn, $sql);
 
                                                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                                    echo "<option value='".$row['id']."'>" . $row['name'] . "</option>";
+                                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
                                                 }
 
                                                 $conn->close();
@@ -59,13 +59,15 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="address">Address</label>
-                                            <input type="text" class="form-control" id="address" name="address" required>
+                                            <input type="text" class="form-control" id="address" name="address"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="nationality">Nationality</label>
-                                            <input type="text" class="form-control" id="nationality" name="nationality" required>
+                                            <input type="text" class="form-control" id="nationality" name="nationality"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -77,7 +79,8 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="mobile">Phone</label>
-                                            <input type="number" class="form-control" id="mobile" name="mobile" required>
+                                            <input type="number" class="form-control" id="mobile" name="mobile"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -113,37 +116,6 @@
 <script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        fetchStates();
-    });
-
-    $(document).on('change', '#country', function () {
-        fetchStates();
-    });
-
-    function fetchStates() {
-        const countryId = $('#country').val();
-        $.ajax({
-            method: 'GET',
-            url: 'backend/countryWiseStates.php',
-            data: {countryId},
-            success: function (res) {
-                const response = JSON.parse(res);
-                const len = response.length;
-                $('#state').empty();
-                if (len) {
-                    for (let i=0; i<len; i++) {
-                        const op_str = "<option value='"+response[i].id+"'>" + response[i].name + "</option>"
-                        $("#state").append(op_str);
-                    }
-                }
-            },
-            error: function (error) {
-                alert('Something Went Wrong!');
-            }
-        })
-    }
-
     $(document).on('submit', '#newPassengerForm', function (e) {
         e.preventDefault();
         const data = new FormData(e.target);
