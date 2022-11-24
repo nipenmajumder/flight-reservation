@@ -97,9 +97,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="confirm_password" class="control-label">Confirm Password</label>
-                                            <input id="confirm_password" type="password" class="form-control"
-                                                   name="confirm_password"
+                                            <label for="password_confirmation" class="control-label">Confirm Password</label>
+                                            <input id="password_confirmation" type="password" class="form-control"
+                                                   name="password_confirmation"
                                                    tabindex="2" required>
                                             <div class="invalid-feedback">
                                                 please fill in your password
@@ -133,8 +133,7 @@
             processData: false,
             contentType: false,
             success: function (res) {
-                toastr.success(res);
-                location.reload();
+                location.href = 'front-login.php';
             },
             error: function (error) {
                 alert('Something Went Wrong!');

@@ -3,6 +3,7 @@
 <?php include 'backend/loginCheck.php'; ?>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="https://d19qjkjk65tfln.cloudfront.net:443/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://d19qjkjk65tfln.cloudfront.net:443/img/favicon.ico" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -20,7 +21,9 @@
     <link href="https://d19qjkjk65tfln.cloudfront.net:443/font-awesome-4.3.0/css/font-awesome.css?v=2" rel="stylesheet">
     <title>Flight</title>
     <link href="https://d19qjkjk65tfln.cloudfront.net:443/css/loader.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
         body {
             font-family: Roboto, sans-serif;
@@ -1084,9 +1087,10 @@
                 <nav class="main-navigation" style="display: block;">
                     <ul>
                         <li><a title="Railway Home" href="index.php" class="" style="color: #6777ef;">Home</a></li>
-                        <li><a title="Railway Home" href="dashboard.php" class="" style="color: #6777ef;">Dashboard</a></li>
-<!--                        <li><a title="Login" href="front-login.php" class="" style="color: #6777ef;">Login</a></li>-->
-<!--                        <li><a title="Register" href="register.php" class="" style="color: #6777ef;">Register</a></li>-->
+                        <li><a title="Railway Home" href="dashboard.php" class="" style="color: #6777ef;">Dashboard</a>
+                        </li>
+                        <!--                        <li><a title="Login" href="front-login.php" class="" style="color: #6777ef;">Login</a></li>-->
+                        <!--                        <li><a title="Register" href="register.php" class="" style="color: #6777ef;">Register</a></li>-->
                         <?php
                         session_start();
                         if (isset($_SESSION['id'])) {
@@ -1188,6 +1192,25 @@
         meanScreenWidth: "992",
         meanMenuContainer: '.mobile-menu'
     });
+    toastr.options = {
+        "closeButton": true,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "200",
+        "hideDuration": "4000",
+        "timeOut": "2000",
+        "extendedTimeOut": "2000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+</script>
+<script>
+
 </script>
 <script>
     $(document).on('click', '#search', function () {
@@ -1224,23 +1247,6 @@
         })
     });
 
-    //$(document).on('click', '#reserve', function () {
-    //    const passenger_id = <?php //echo $_SESSION['id']; ?>//;
-    //    const date = $('#date').val();
-    //    const aircraft_id = $('#aircraft_id').val();
-    //    console.log(passenger_id, date, aircraft_id);
-    //    // $.ajax({
-    //    //     method: 'GET',
-    //    //     url: 'backend/reserveTicket.php',
-    //    //     data: {date},
-    //    //     success: function (res) {
-    //    //         console.log(res);
-    //    //     },
-    //    //     error: function (error) {
-    //    //
-    //    //     }
-    //    // })
-    //});
     function reserve(id) {
         const passenger_id = <?php echo $_SESSION['id']; ?>;
         const date = $('#date').val();
@@ -1251,11 +1257,11 @@
             url: 'backend/reserveTicket.php',
             data: {passenger_id, date, aircraft_id},
             success: function (res) {
-              if (res === 'success') {
-                  alert('Ticket Reserved Successfully');
-              } else {
-                  alert('Something went wrong');
-              }
+                if (res === 'success') {
+                    toastr.success("Ticket Reserved Successfully");
+                } else {
+                    toastr.error("Something went wrong");
+                }
             },
             error: function (error) {
 
