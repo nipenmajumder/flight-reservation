@@ -107,9 +107,19 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                        <button type="submit" class="btn btn-primary btn-lg " tabindex="4">
                                             Register
                                         </button>
+                                        <a href="front-login.php">
+                                            <button type="button" class="btn btn-lg btn-success" tabindex="4">
+                                                Login
+                                            </button>
+                                        </a>
+                                        <a href="index.php">
+                                            <button type="button" class="btn btn-lg btn-secondary" tabindex="4">
+                                                Home
+                                            </button>
+                                        </a>
                                     </div>
 
                                 </div>

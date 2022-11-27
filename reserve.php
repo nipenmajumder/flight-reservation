@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include 'backend/loginCheck.php'; ?>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -1078,7 +1079,7 @@
             <div class="site-wrapper clearfix">
                 <div class="site-logo">
                     <a title="Bangladesh Railway" href="index.php" class="header-logo">
-                        <div class="header-logo-text" style=" color: #182483;font-size: 37px;">
+                        <div class="header-logo-text" style="color: #6777ef;">
                             Flight Reservation
                         </div>
                     </a>
@@ -1086,8 +1087,15 @@
                 <nav class="main-navigation" style="display: block;">
                     <ul>
                         <li><a href="index.php" class="" style="color: #6777ef;">Home</a></li>
-                        <li><a title="Login" href="front-login.php" class="" style="color: #6777ef;">Login</a></li>
-                        <li><a title="Register" href="register.php" class="" style="color: #6777ef;">Register</a></li>
+                        <li><a  href="dashboard.php" class="" style="color: #6777ef;">Dashboard</a>
+                        </li>
+                        <!--                        <li><a title="Login" href="front-login.php" class="" style="color: #6777ef;">Login</a></li>-->
+                        <!--                        <li><a title="Register" href="register.php" class="" style="color: #6777ef;">Register</a></li>-->
+                        <?php
+                        if (isset($_SESSION['id'])) {
+                            echo '<li><a  href="logout.php" class="" style="color: #6777ef;">Logout</a></li>';
+                        }
+                        ?>
                     </ul>
                 </nav>
                 <div class="mobile-menu"></div>
@@ -1097,30 +1105,81 @@
 </header>
 
 <div id="main_wrapper">
+    <?php include 'backend/connection.php'; ?>
     <div class="main-meta-title">
         <h1>Flight Reservation</h1>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h2>
-                    Fly With Biman right away
-                </h2>
-                <h4 style="color: blue">
-                    It is our immense pleasure to inform you that Biman has incorporated world class Booking Engine for
-                    its cherished passengers to provide the best service.
-                    Enjoy amazing discounts, get your e-ticket,
-                    customize your booking, and find out the status of your flight in real time through our Website.
-                </h4>
-            </div>
-            <div class="col-md-9">
-                <img src="https://images.hdqwalls.com/wallpapers/bthumb/plane-artwork-4k-4g.jpg"
-                     style="width: 100%;border-radius: 11px"
-                     alt=""/>
+    <div class="clearfix"></div>
+    <section id="content" class="container">
+        <div id="search_sec" style="padding:0;">
+            <div class="clearfix"></div>
+            <div class="srch_container" style="padding:10px 0;">
+                <div class="block col-md-12 search-col-rw" style="position: static;padding-left: 0;">
+                    <div id="dialog_container_block" title="Message Dialog"></div>
+                    <ul class="list-inline">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="departure">From</label>
+                                    <select name="departure" id="departure" class="form-control">
+                                        <option value="" selected disabled>Choose a Departure Airport</option>
+                                        <?php
+                                        $sql = "SELECT * FROM airports";
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                            echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="destination">To</label>
+                                    <select name="destination" id="destination" class="form-control">
+                                        <option value="" selected disabled>Choose a Destination Airport</option>
+                                        <?php
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                            echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                        }
+                                        $conn->close();
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row search-widget-button-and-error">
+                            <div class="col-md-12" style="margin-top:20px;">
+                                <div class="railway-ticket-search-submit-btn">
+                                    <button id="search" style="background-color: #6777ef;">SEARCH Plains</button>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
-
-    </div>
+        <div class="col-md-12">
+            <table class="table table-striped table-hover" style="display: none" id="flightListTable">
+                <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Name</th>
+                    <th>Capacity</th>
+                    <th>Departure</th>
+                    <th>Fare</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
@@ -1132,7 +1191,82 @@
         meanScreenWidth: "992",
         meanMenuContainer: '.mobile-menu'
     });
+    toastr.options = {
+        "closeButton": true,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "200",
+        "hideDuration": "4000",
+        "timeOut": "2000",
+        "extendedTimeOut": "2000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+</script>
+<script>
 
+</script>
+<script>
+    $(document).on('click', '#search', function () {
+        const departure = $('#departure').val();
+        const destination = $('#destination').val();
+        $.ajax({
+            method: 'GET',
+            url: 'backend/routeWiseFlightFilter.php',
+            data: {departure, destination},
+            success: function (res) {
+                $('#flightListTable').show();
+                $("#flightListTable tbody").empty();
+                const response = JSON.parse(res);
+                const len = response.length;
+                if (len) {
+                    for (let i = 0; i < len; i++) {
+                        const tr_str = "<tr>" +
+                            "<td>" + (i + 1) + "</td>" +
+                            "<td>" + response[i].name + "</td>" +
+                            "<td>" + response[i].capacity + "</td>" +
+                            "<td>" + response[i].departure + "</td>" +
+                            "<td>" + response[i].fare + "</td>" +
+                            "<td style='width:8%'> <input type='date' class='form-control' name='date' id='date'/> </td>" +
+                            "<td> <button type='button' onclick='reserve(" + response[i].id + ")' class='btn btn-sm btn-success'>Reserve </button></td>" +
+                            "</tr>";
+
+                        $("#flightListTable tbody").append(tr_str);
+                    }
+                }
+            },
+            error: function (error) {
+
+            }
+        })
+    });
+
+    function reserve(id) {
+        const passenger_id = <?php echo $_SESSION['id']; ?>;
+        const date = $('#date').val();
+        let aircraft_id = id;
+
+        $.ajax({
+            method: 'post',
+            url: 'backend/reserveTicket.php',
+            data: {passenger_id, date, aircraft_id},
+            success: function (res) {
+                if (res === 'success') {
+                    toastr.success("Ticket Reserved Successfully");
+                } else {
+                    toastr.error("Something went wrong");
+                }
+            },
+            error: function (error) {
+
+            }
+        })
+    }
 </script>
 </body>
 </html>
