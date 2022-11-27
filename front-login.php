@@ -27,7 +27,7 @@ if (count($_POST) > 0) {
     }
 }
 if (isset($_SESSION["id"])) {
-    header("Location:index.php");
+    header("Location:reserve.php");
 }
 ?>
 <body>
@@ -65,9 +65,20 @@ if (isset($_SESSION["id"])) {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                    <button type="submit" class="btn btn-lg btn-primary " tabindex="4">
                                         Login
                                     </button>
+
+                                    <a href="register.php">
+                                        <button type="button" class="btn btn-lg btn-success" tabindex="4">
+                                            Sign Up
+                                        </button>
+                                    </a>
+                                    <a href="index.php">
+                                        <button type="button" class="btn btn-lg btn-secondary" tabindex="4">
+                                            Home
+                                        </button>
+                                    </a>
                                 </div>
                             </form>
                         </div>
