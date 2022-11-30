@@ -1080,7 +1080,7 @@
                 <div class="site-logo">
                     <a title="Bangladesh Railway" href="index.php" class="header-logo">
                         <div class="header-logo-text" style="color: #6777ef;">
-                            Flight Reservation
+                            Flight Reservation System
                         </div>
                     </a>
                 </div>
